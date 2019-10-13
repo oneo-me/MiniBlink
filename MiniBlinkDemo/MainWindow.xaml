@@ -1,0 +1,13 @@
+﻿<Window
+    x:Class="MiniBlinkDemo.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:MiniBlinkDemo"
+    xmlns:blink="https://miniblink.oneo.me"
+    UseLayoutRounding="True" SnapsToDevicePixels="True" WindowStartupLocation="CenterScreen"
+    Title="MiniBlinkDemo" Width="800" Height="660">
+    <Window.DataContext>
+        <local:MainWindow_Model />
+    </Window.DataContext>
+    <blink:WebBrowser Url="https://www.bilibili.com/" />
+</Window>
