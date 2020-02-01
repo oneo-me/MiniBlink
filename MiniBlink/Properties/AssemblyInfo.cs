@@ -2,4 +2,4 @@
 using System.Windows.Markup;
 
 [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
-[assembly: XmlnsDefinition("https://miniblink.oneo.me", nameof(MiniBlink))]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", nameof(MiniBlink))]

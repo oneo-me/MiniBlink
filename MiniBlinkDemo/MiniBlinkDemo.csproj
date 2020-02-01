@@ -1,26 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
     <PropertyGroup>
-        <TargetFramework>net461</TargetFramework>
-        <LangVersion>latest</LangVersion>
         <OutputType>WinExe</OutputType>
+        <UseWPF>true</UseWPF>
         <ApplicationManifest>App.manifest</ApplicationManifest>
-        <PlatformTarget>x86</PlatformTarget>
     </PropertyGroup>
-    <ItemGroup>
-        <None Remove="**\*.xaml" />
-        <ApplicationDefinition Include="App.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </ApplicationDefinition>
-        <Page Include="**\*.xaml" Exclude="App.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </Page>
-    </ItemGroup>
-    <ItemGroup>
-        <Reference Include="PresentationCore" />
-        <Reference Include="PresentationFramework" />
-        <Reference Include="System.Xaml" />
-        <Reference Include="WindowsBase" />
-    </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\MiniBlink\MiniBlink.csproj" />
     </ItemGroup>
