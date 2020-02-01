@@ -348,6 +348,8 @@ namespace MiniBlink
             var flags = GetMouseFlags();
             var position = e.GetPosition(this);
             BlinkCore.wkeFireMouseWheelEvent(Handle, (int)position.X, (int)position.Y, e.Delta, flags);
+
+            e.Handled = true;
         }
 
         MouseButton? changedButton;
