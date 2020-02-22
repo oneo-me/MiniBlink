@@ -1,6 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
     <PropertyGroup>
         <UseWPF>true</UseWPF>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageId>MiniBlinkForWPF</PackageId>
+        <Authors>ONEO</Authors>
+        <Description>MiniBlink For WPF</Description>
     </PropertyGroup>
     <ItemGroup>
         <None Update="plugins\**">
@@ -12,5 +16,10 @@
         <None Update="x64\**">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="plugins\**" Pack="True" PackagePath="contentFiles\any\any\plugins\"  PackageCopyToOutput="true"/>
+        <None Include="x64\**" Pack="True" PackagePath="contentFiles\any\any\x64\" PackageCopyToOutput="true"/>
+        <None Include="x86\**" Pack="True" PackagePath="contentFiles\any\any\x86\" PackageCopyToOutput="true" />
     </ItemGroup>
 </Project>
