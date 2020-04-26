@@ -123,7 +123,7 @@ namespace MiniBlink
             if (Handle == IntPtr.Zero)
                 return;
 
-            WebBrowserRender.Render(this, Handle, hdc, x, y, width, height, image);
+            WebBrowserRender.Render(image, Handle, hdc, x, y, width, height);
         }
 
         void OnLoadingFinish(IntPtr webView, IntPtr param, IntPtr url, wkeLoadingResult result, IntPtr failedReason)
