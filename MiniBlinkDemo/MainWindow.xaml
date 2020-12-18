@@ -5,8 +5,23 @@
     xmlns:local="clr-namespace:MiniBlinkDemo"
     UseLayoutRounding="True" SnapsToDevicePixels="True" WindowStartupLocation="CenterScreen"
     Title="MiniBlinkDemo" Width="800" Height="660">
-    <Window.DataContext>
-        <local:MainWindow_Model />
-    </Window.DataContext>
-    <Blink Url="https://www.bilibili.com/" />
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MainWindow.OpenUrlCommand}"
+                        Executed="ExecutedOpenUrlCommand"
+                        CanExecute="CanExecutedOpenUrlCommand" />
+    </Window.CommandBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderThickness="0 0 0 1" BorderBrush="#19000000">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="html5test.com" Command="{x:Static local:MainWindow.OpenUrlCommand}" CommandParameter="https://html5test.com/" Padding="8" Margin="5" />
+                <Button Content="www.bilibili.com" Command="{x:Static local:MainWindow.OpenUrlCommand}" CommandParameter="https://www.bilibili.com/" Padding="8" Margin="5" />
+                <Button Content="map.baidu.com" Command="{x:Static local:MainWindow.OpenUrlCommand}" CommandParameter="https://map.baidu.com/" Padding="8" Margin="5" />
+            </StackPanel>
+        </Border>
+        <Blink Grid.Row="1" x:Name="Blink" Url="https://html5test.com/" />
+    </Grid>
 </Window>

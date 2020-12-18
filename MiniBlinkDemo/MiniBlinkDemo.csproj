@@ -3,6 +3,7 @@
         <OutputType>WinExe</OutputType>
         <UseWPF>true</UseWPF>
         <ApplicationManifest>App.manifest</ApplicationManifest>
+        <RuntimeIdentifier>win-x86</RuntimeIdentifier>
     </PropertyGroup>
     <ItemGroup>
         <ProjectReference Include="..\MiniBlink\MiniBlink.csproj" />
