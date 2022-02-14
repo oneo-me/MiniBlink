@@ -1,9 +1,9 @@
 <Project>
     <PropertyGroup>
-        <TargetFramework>net461</TargetFramework>
+        <TargetFramework>net5.0-windows</TargetFramework>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="AutoVersionTask" Version="3.6.0" PrivateAssets="All" />
+        <PackageReference Include="AutoVersionTask" Version="2021.1.19.1" PrivateAssets="All" />
     </ItemGroup>
 </Project>

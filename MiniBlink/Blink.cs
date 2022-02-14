@@ -11,17 +11,17 @@ using MiniBlink.Core;
 
 namespace MiniBlink
 {
-    public sealed class Blink : ContentControl, IDisposable
+    public sealed class Blink : Control, IDisposable
     {
         readonly wkePaintUpdatedCallback paintUpdated;
         readonly wkeLoadingFinishCallback loadingFinish;
         readonly wkeNavigationCallback navigation;
         readonly wkeConsoleMessageCallback consoleMessage;
-        readonly Image image;
 
         public EventHandler<LoadingResult> LoadingCallback;
 
         public IntPtr Handle { get; private set; }
+        public OffscreenGraphics OffscreenGraphics { get; }
 
         public Blink()
         {
@@ -33,16 +33,8 @@ namespace MiniBlink
             navigation = OnNavigation;
             consoleMessage = OnConsoleMessage;
 
-            Content = image = new Image
-            {
-                SnapsToDevicePixels = true,
-                UseLayoutRounding = true,
-                HorizontalAlignment = HorizontalAlignment.Left,
-                VerticalAlignment = VerticalAlignment.Top,
-                Stretch = Stretch.None
-            };
-
             CreateCore();
+            OffscreenGraphics = new OffscreenGraphics();
 
             Loaded += OnLoaded;
             Unloaded += OnUnloaded;
@@ -122,8 +114,6 @@ namespace MiniBlink
         {
             if (Handle == IntPtr.Zero)
                 return;
-
-            WebBrowserRender.Render(image, Handle, hdc, x, y, width, height);
         }
 
         void OnLoadingFinish(IntPtr webView, IntPtr param, IntPtr url, wkeLoadingResult result, IntPtr failedReason)
@@ -438,6 +428,12 @@ namespace MiniBlink
             var result = BlinkCore.wkeFireKeyUpEvent(Handle, (uint)key, 0, false);
 
             Debug.WriteLine($"UP {e.Key} - {key}: {result}");
+        }
+
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            base.OnRender(drawingContext);
+            OffscreenGraphics?.Render(drawingContext);
         }
 
         ~Blink()
